@@ -4,11 +4,23 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>880724f4-61fa-48cb-99b7-0efee7d2902a</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="TodoLibrary\**" />
+    <Content Remove="TodoLibrary\**" />
+    <EmbeddedResource Remove="TodoLibrary\**" />
+    <None Remove="TodoLibrary\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TodoLibrary\TodoLibrary.csproj" />
   </ItemGroup>
 
 </Project>
