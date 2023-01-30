@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TodoLibrary.Data;
 
 namespace MinimalApi.Endpoints;
@@ -16,7 +17,7 @@ public static class TodoEndpoints
     }
 
 
-
+    [Authorize]
     private async static Task<IResult> GetAllTodos(ITodoData data)
     {
         var output = await data.GetAllAssigned(1);
@@ -24,7 +25,7 @@ public static class TodoEndpoints
         return Results.Ok(output);
     }
 
-
+    [Authorize]
     private async static Task<IResult> CreateTodo(ITodoData data, [FromBody] string task)
     {
         var output = await data.CreateTodo(1, task);
@@ -33,7 +34,7 @@ public static class TodoEndpoints
 
     }
 
-
+    [Authorize]
     private async static Task<IResult> DeleteTodo(ITodoData data, int id)
     {
         await data.DeleteTodo(1, id);
